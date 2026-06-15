@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>App-Violão v2.0 — Estrutura do projeto</title>
+<style>
+  *{box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#0d1117;color:#c9d1d9;margin:0;padding:24px}
+  .wrap{max-width:1100px;margin:0 auto}
+  h1{font-size:24px;margin:0 0 6px}
+  .sub{color:#8b949e;margin-bottom:24px}
+  .git{background:#161b22;border:1px solid #30363d;border-radius:6px;padding:16px 20px;margin-bottom:20px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:13px;line-height:1.6;white-space:pre}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
+  .card{background:#161b22;border:1px solid #30363d;border-radius:6px;padding:14px 16px}
+  .card .label{font-size:11px;color:#8b949e;text-transform:uppercase;letter-spacing:.5px}
+  .card .value{font-size:20px;color:#c9d1d9;margin-top:4px;font-weight:600}
+  .section{background:#161b22;border:1px solid #30363d;border-radius:6px;padding:16px 20px;margin-bottom:16px}
+  .section h2{margin:0 0 12px;font-size:16px;font-weight:600;border-bottom:1px solid #21262d;padding-bottom:8px}
+  .file{display:flex;align-items:baseline;padding:4px 0;font-family:ui-monospace,monospace;font-size:13px;border-bottom:1px dotted #21262d}
+  .file:last-child{border-bottom:none}
+  .file .ico{width:22px;margin-right:6px}
+  .file .path{flex:1;color:#c9d1d9}
+  .file .size{color:#8b949e;font-variant-numeric:tabular-nums;width:90px;text-align:right;font-size:12px}
+  .badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;margin-right:6px}
+  .b-new{background:#1f6feb33;color:#79c0ff;border:1px solid #1f6feb55}
+  .b-sec{background:#da363333;color:#ff7b72;border:1px solid #da363355}
+  .b-pay{background:#23863633;color:#7ee787;border:1px solid #23863655}
+  .b-pwa{background:#8957e533;color:#d2a8ff;border:1px solid #8957e555}
+  a{color:#58a6ff}
+  code{background:#0d1117;padding:2px 6px;border-radius:4px;font-size:12px}
+  .next{background:#0d4429;border:1px solid #238636;border-radius:6px;padding:14px 18px;margin-top:20px}
+  .next h3{margin:0 0 8px;color:#7ee787;font-size:14px}
+  .next ol{margin:0;padding-left:20px;line-height:1.7}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>🎸 App-Violão v2.0 — Estrutura do projeto</h1>
+  <div class="sub">Refatorado: assinatura mensal R$ 24,90, PIX dinâmico, SQLite persistente, PWA endurecido</div>
+
+  <div class="grid">
+    <div class="card"><div class="label">Arquivos commitados</div><div class="value">40</div></div>
+    <div class="card"><div class="label">Linhas inseridas</div><div class="value">8.464</div></div>
+    <div class="card"><div class="label">Commit</div><div class="value" style="font-size:14px">37cb74b</div></div>
+  </div>
+
+  <div class="section">
+    <h2>🌳 Árvore de arquivos</h2>
+    <div class="file"><span class="ico">📄</span><span class="path">App-Violao/README.md</span><span class="size">3.254 B</span></div>
+    <div class="file"><span class="ico">📄</span><span class="path">App-Violao/.env.example</span><span class="size">1.018 B</span></div>
+    <div class="file"><span class="ico">📄</span><span class="path">App-Violao/.gitignore</span><span class="size">133 B</span></div>
+    <div class="file"><span class="ico">📄</span><span class="path">App-Violao/Dockerfile</span><span class="size">793 B</span></div>
+    <div class="file"><span class="ico">📄</span><span class="path">App-Violao/fly.toml</span><span class="size">921 B</span></div>
+    <div class="file"><span class="ico">📁</span><span class="path">App-Violao/.github/workflows/</span><span class="size"></span></div>
+    <div class="file"><span class="ico">📄</span><span class="path">  ├─ ci.yml</span><span class="size">792 B</span></div>
+    <div class="file"><span class="ico">📄</span><span class="path">  └─ deploy.yml</span><span class="size">442 B</span></div>
+    <div class="file"><span class="ico">📁</span><span class="path">App-Violao/backend/</span><span class="size"></span></div>
+    <div class="file"><span class="ico">📄</span><span class="path">  ├─ package.json</span><span class="size">581 B</span></div>
+    <div class="file"><span class="ico">📄</span><span class="path">  └─ src/</span><span class="size"></span></div>
+    <div class="file"><span class="ico">📄</span><span class="path">     ├─ auth.js  <span class="badge b-new">novo</span></span><span class="size">3.993 B</span></div>
+    <div class="file"><span class="ico">📄</span><span class="path">     ├─ db.js  <span class="badge b-new">SQLite</span></span><span class="size">5.406 B</span></div>
+    <div class="file"><span class="ico">📄</span><span class="path">     ├─ index.js  <span class="badge b-sec">helmet+rate</span></span><span class="size">12.387 B</span></div>
+    <div class="file"><span class="ico">📄</span><span class="path">     └─ mercadopago.js  <span class="badge b-pay">+cancel+PIX</span></span><span class="size">8.153 B</span></div>
+    <div class="file"><span class="ico">📁</span><span class="path">App-Violao/frontend/</span><span class="size"></span></div>
+    <div class="file"><span class="ico">📄</span><span class="path">  ├─ index.html</span><span class="size">3.908 B</span></div>
+    <div class="file"><span class="ico">📄</span><span class="path">  ├─ vite.config.js</span><span class="size">503 B</span></div>
+    <div class="file"><span class="ico">📄</span><span class="path">  ├─ vercel.json</span><span class="size">96 B</span></div>
+    <div class="file"><span class="ico">📁</span><span class="path">  ├─ public/</span><span class="size"></span></div>
+    <div class="file"><span class="ico">📄</span><span class="path">  │  ├─ manifest.json  <span class="badge b-pwa">maskable</span></span><span class="size">1.424 B</span></div>
+    <div class="file"><span class="ico">📄</span><span class="path">  │  ├─ sw.js  <span class="badge b-pwa">v3 network-first</span></span><span class="size">2.434 B</span></div>
+    <div class="file"><span class="ico">📄</span><span class="path">  │  ├─ fly-auth.html</span><span class="size">1.832 B</span></div>
+    <div class="file"><span class="ico">📄</span><span class="path">  │  └─ icons/ (5 PNGs)</span><span class="size">61.8 KB</span></div>
+    <div class="file"><span class="ico">📁</span><span class="path">  └─ src/</span><span class="size"></span></div>
+    <div class="file"><span class="ico">📄</span><span class="path">     ├─ App.jsx  <span class="badge b-pay">R$24,90 + PIX</span></span><span class="size">66.892 B</span></div>
+    <div class="file"><span class="ico">📄</span><span class="path">     ├─ main.jsx  <span class="badge b-pwa">SW scope=/</span></span><span class="size">2.154 B</span></div>
+    <div class="file"><span class="ico">📄</span><span class="path">     ├─ index.css</span><span class="size">71.957 B</span></div>
+    <div class="file"><span class="ico">📁</span><span class="path">     ├─ components/ (10 .jsx)</span><span class="size">~55 KB</span></div>
+    <div class="file"><span class="ico">📁</span><span class="path">     ├─ hooks/</span><span class="size">642 B</span></div>
+    <div class="file"><span class="ico">📁</span><span class="path">     └─ utils/ (3 .js)</span><span class="size">~20 KB</span></div>
+  </div>
+
+  <div class="section">
+    <h2>🔐 O que mudou (segurança)</h2>
+    <ul>
+      <li><span class="badge b-sec">Crítico</span> Chave PIX hardcoded <code>02292567083</code> removida — agora gera QR dinâmico via MP</li>
+      <li><span class="badge b-sec">Crítico</span> JWT_SECRET agora é <strong>obrigatório</strong> (app não inicia sem)</li>
+      <li><span class="badge b-sec">Crítico</span> Tokens MP vazados nos docs antigos (revogar no painel!)</li>
+      <li><span class="badge b-sec">Alto</span> DB em JSON trocado por SQLite (volume persistente no Fly)</li>
+      <li><span class="badge b-sec">Alto</span> helmet + rate-limit (500 global, 20 auth, 30 pagamento)</li>
+      <li><span class="badge b-sec">Alto</span> CORS restrito via ALLOWED_ORIGINS (sem mais <code>origin: true</code>)</li>
+      <li><span class="badge b-new">Novo</span> Tabela <code>payments</code> registra todas as transações</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>💳 Billing</h2>
+    <ul>
+      <li><strong>R$ 24,90/mês</strong> via <code>/preapproval</code> (recorrente)</li>
+      <li><strong>PIX avulso</strong> gera QR Code dinâmico (<code>/api/pagamento/pix</code>)</li>
+      <li><strong>Cancelar</strong> encerra no MP (<code>/api/pagamento/cancel</code>)</li>
+      <li><strong>Webhook</strong> assíncrono: responde 200 instantâneo, processa depois</li>
+      <li>Trial de <strong>7 dias</strong> mantido (criação do user já ativa premium)</li>
+      <li>UI: botões "Gerenciar no MP" + "Cancelar" no modal premium</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>📱 PWA</h2>
+    <ul>
+      <li>Service Worker registrado com <code>scope: '/'</code></li>
+      <li>Estratégia <strong>network-first</strong> com fallback cache (não cacheia API)</li>
+      <li>Manifest com <strong>ícones maskable</strong> + shortcuts (Músicas / Afinador)</li>
+      <li>Meta tags Apple (status-bar, title, touch-icon)</li>
+      <li>theme-color dark mode</li>
+      <li>Build manual chunks (react separado)</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>🛫 Próximos passos (pra subir)</h2>
+    <div class="next">
+      <h3>Ações necessárias (não automatizáveis):</h3>
+      <ol>
+        <li><strong>Revogar tokens MP</strong> que vazaram no GitHub (painel do MP)</li>
+        <li><strong>Gerar novos tokens</strong> de produção</li>
+        <li>Autenticar <code>gh auth login</code> pra eu fazer push no seu GitHub</li>
+        <li>Autenticar <code>fly auth login</code> pra eu criar a app no Fly.io</li>
+        <li>Me passar os tokens MP pra eu colocar nos secrets do Fly</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>📦 Artefatos prontos pra você baixar</h2>
+    <p style="line-height:1.6">
+      <strong>ZIP do código-fonte completo</strong> (129.6 KB, sem <code>.git</code>):
+    </p>
+  </div>
+
+</div>
+</body>
+</html>
