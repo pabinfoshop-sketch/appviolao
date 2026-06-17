@@ -1,6 +1,39 @@
-
-# Beads / Dolt files (added by bd init)
+# Beads / Dolt files
 .dolt/
 *.db
 .beads-credential-key
 .beads/proxieddb/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Env / secrets
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# Backend runtime
+backend/data/
+backend/*.db
+backend/*.db-journal
+
+# Build output
+frontend/dist/
+frontend/dist-icons-options/
+.vite/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp

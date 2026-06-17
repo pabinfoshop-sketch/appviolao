@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="pt-BR" style="background:#0c0c14;color-scheme:dark">
+<html lang="pt-BR" style="background:#0d0905;color-scheme:dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="theme-color" content="#0c0c14" media="(prefers-color-scheme: dark)" />
-    <meta name="theme-color" content="#0c0c14" />
+    <meta name="theme-color" content="#0d0905" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#0d0905" />
     <meta name="color-scheme" content="dark" />
     <meta name="description" content="Cifras, Acordes, Repertórios, Afinador e Metrônomo para violão. Funciona offline." />
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -20,19 +20,24 @@
     <link rel="preconnect" href="https://api.mercadopago.com" />
     <title>Cifras App — Violão, Cifras e Repertórios</title>
     <style>
-      html, body { margin: 0; padding: 0; background: #0c0c14; overflow: hidden; height: 100%; width: 100%; }
-      #root { background: #0c0c14; min-height: 100%; }
-      #splash { position: fixed; inset: 0; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #0c0c14; font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif; }
-      #splash .logo { font-size: 5rem; background: linear-gradient(135deg, #7c6df0, #f06d8a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 12px; animation: bounceIn 0.8s cubic-bezier(0.34,1.56,0.64,1) both; line-height: 1; }
-      #splash .name { font-size: 1.6rem; font-weight: 900; letter-spacing: 0.05em; background: linear-gradient(135deg, #7c6df0, #f06d8a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 6px; animation: slideUp 0.8s ease 0.3s both; }
-      #splash .tag { font-size: 0.8rem; color: #8888b0; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 500; animation: slideUp 0.8s ease 0.6s both; }
-      #splash .credit { margin-top: 16px; font-size: 0.75rem; color: #5c5c7a; letter-spacing: 0.08em; font-weight: 500; animation: slideUp 0.8s ease 0.9s both; }
-      #splash .credit sup { font-size: 0.55rem; margin-left: 1px; color: #7c6df0; }
-      #splash .bar { margin-top: 24px; width: 120px; height: 3px; background: #2a2a44; border-radius: 2px; overflow: hidden; animation: slideUp 0.8s ease 0.9s both; }
-      #splash .bar::before { content: ''; display: block; width: 40%; height: 100%; background: linear-gradient(90deg, #7c6df0, #f06d8a); border-radius: 2px; animation: load 2s ease-in-out infinite; }
+      html, body { margin: 0; padding: 0; background: #0d0905; overflow: hidden; height: 100%; width: 100%; }
+      #root { background: #0d0905; min-height: 100%; }
+      #splash { position: fixed; inset: 0; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center;
+        background:
+          repeating-linear-gradient(92deg, transparent 0px, transparent 3px, rgba(255,200,140,0.025) 3px, rgba(255,200,140,0.025) 5px),
+          #0d0905;
+        font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif; }
+      #splash .logo { font-size: 5rem; background: linear-gradient(135deg, #00d4ff, #0099ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 12px; text-shadow: 0 0 24px rgba(0,212,255,0.45); animation: bounceIn 0.8s cubic-bezier(0.34,1.56,0.64,1) both, neonPulse 2.4s ease-in-out 0.8s infinite; line-height: 1; }
+      #splash .name { font-size: 1.6rem; font-weight: 900; letter-spacing: 0.05em; background: linear-gradient(135deg, #00d4ff, #0099ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 6px; text-shadow: 0 0 16px rgba(0,212,255,0.35); animation: slideUp 0.8s ease 0.3s both; }
+      #splash .tag { font-size: 0.8rem; color: #b09878; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 500; animation: slideUp 0.8s ease 0.6s both; }
+      #splash .credit { margin-top: 16px; font-size: 0.75rem; color: #6b5040; letter-spacing: 0.08em; font-weight: 500; animation: slideUp 0.8s ease 0.9s both; }
+      #splash .credit sup { font-size: 0.55rem; margin-left: 1px; color: #00d4ff; }
+      #splash .bar { margin-top: 24px; width: 120px; height: 3px; background: #3d2c1e; border-radius: 2px; overflow: hidden; animation: slideUp 0.8s ease 0.9s both; box-shadow: 0 0 8px rgba(0,212,255,0.2); }
+      #splash .bar::before { content: ''; display: block; width: 40%; height: 100%; background: linear-gradient(90deg, #00d4ff, #0099ff); border-radius: 2px; animation: load 2s ease-in-out infinite; box-shadow: 0 0 8px rgba(0,212,255,0.6); }
       @keyframes bounceIn { 0% { transform: scale(0.5); opacity: 0; } 60% { transform: scale(1.1); opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
       @keyframes slideUp { from { transform: translateY(15px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
       @keyframes load { 0% { transform: translateX(-100%); } 100% { transform: translateX(350%); } }
+      @keyframes neonPulse { 0%, 100% { filter: drop-shadow(0 0 6px rgba(0,212,255,0.35)); } 50% { filter: drop-shadow(0 0 16px rgba(0,212,255,0.7)); } }
     </style>
   </head>
   <body>
