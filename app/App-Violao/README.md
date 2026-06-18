@@ -50,15 +50,15 @@ Acesse `http://localhost:5173` (Vite) — proxy automático para `:3001`.
 flyctl auth login
 
 # 3) Primeira vez: crie a app
-flyctl apps create cifras-app
-flyctl volumes create cifras_data --size 1 --region gru
+flyctl apps create pcifras-music
+flyctl volumes create pcifras_music_data --size 1 --region gru
 
 # 4) Configure os secrets (NÃO commite!)
 flyctl secrets set \
   JWT_SECRET="$(node -e "console.log(require('crypto').randomBytes(48).toString('base64url'))")" \
   MP_ACCESS_TOKEN="APP_USR-..." \
   MP_PUBLIC_KEY="APP_USR-..." \
-  --app cifras-app
+  --app pcifras-music
 
 # 5) Deploy
 flyctl deploy
@@ -70,7 +70,7 @@ flyctl open
 ### Webhook do Mercado Pago
 
 No painel do MP (`https://www.mercadopago.com.br/developers/panel/notifications/webhooks`):
-- URL: `https://cifras-app.fly.dev/api/pagamento/webhook`
+- URL: `https://pcifras-music.fly.dev/api/pagamento/webhook`
 - Eventos: `Assinaturas` e `Pagamentos`
 
 ## 🔐 Segurança

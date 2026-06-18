@@ -1,4 +1,4 @@
-app = "cifras-app"
+app = "pcifras-music"
 primary_region = "gru"
 
 [build]
@@ -11,8 +11,8 @@ primary_region = "gru"
   DB_PATH = "/data/app.db"
   TRIAL_DAYS = "7"
   SUBSCRIPTION_PRICE_BRL = "24.90"
-  DOMAIN = "https://cifras-app.fly.dev"
-  BACK_URL = "https://cifras-app.fly.dev/?pagamento=retorno"
+  DOMAIN = "https://pcifras-music.fly.dev"
+  BACK_URL = "https://pcifras-music.fly.dev/?pagamento=retorno"
 
 [http_service]
   internal_port = 3001
@@ -27,23 +27,18 @@ primary_region = "gru"
     hard_limit = 100
     soft_limit = 80
 
+  [[http_service.checks]]
+    interval = "30s"
+    timeout = "5s"
+    grace_period = "20s"
+    method = "GET"
+    path = "/api/health"
+
 [[vm]]
   cpu_kind = "shared"
   cpus = 1
   memory_mb = 512
 
 [mounts]
-  source = "cifras_data"
+  source = "pcifras_music_data"
   destination = "/data"
-
-[[services.tcp_checks]]
-  grace_period = "10s"
-  interval = "30s"
-  timeout = "5s"
-
-[[services.http_checks]]
-  interval = "30s"
-  timeout = "5s"
-  grace_period = "20s"
-  method = "GET"
-  path = "/api/health"
